@@ -1,4 +1,4 @@
-apiVersion: batch/v1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: alarmbot
@@ -12,6 +12,6 @@ spec:
         spec:
           containers:
           - name: alarmbot
-            image: leedowon/goormalarm:1.1
+            image: 562282606062.dkr.ecr.ap-northeast-2.amazonaws.com/goorm/telegram-alarm:1.0
             imagePullPolicy: IfNotPresent
           restartPolicy: OnFailure
