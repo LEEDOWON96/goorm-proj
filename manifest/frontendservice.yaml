@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-app
+  labels:
+    app: goorm-web
+    tier: frontend
+    track: stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goorm-web
+      tier: frontend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: goorm-web
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+      - name: goorm-web
+        image: 562282606062.dkr.ecr.ap-northeast-2.amazonaws.com/goorm/frontend-app:1.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: goorm-web
+    tier: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080

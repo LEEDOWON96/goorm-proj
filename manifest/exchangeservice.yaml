@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  labels:
+    app: goorm-web
+    tier: backend
+    track: stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goorm-web
+      tier: backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: goorm-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+      - name: goorm-back
+        image: 562282606062.dkr.ecr.ap-northeast-2.amazonaws.com/goorm/backend-app:1.1
+        ports:
+        - containerPort: 3100
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: goorm-web
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3100
+    nodePort: 31000
