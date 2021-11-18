@@ -4,15 +4,17 @@ from datetime import datetime
 today_date = datetime.today().strftime("%Y-%m-%d")  # WHERE 문에서 현재 시각 조건 입력위함
 
 conn = psycopg2.connect(
-    host="database-1.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
-    database="test",
-    user="goorm",
-    password="test123qwe",
+    host="eks-work-db.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
+    database="myworkdb",
+    user="mywork",
+    password="wIi~e1xIrj!C~Hv.",
     port="5432"
 )
 
-cur_check = conn.cursor()
-cur_check.excute("SELECT ")
+
+# db 데이터 업데이트 관련 (기존 데이터 없다면 init_db.py 실행, 있으면 update_db.py 실행)
+# cur_check = conn.cursor()
+# cur_check.excute("SELECT ")
 
 
 def now_data_list(nation):
@@ -72,4 +74,13 @@ def now_data_list(nation):
         cur.execute("SELECT * FROM krw WHERE date=CURRENT_DATE")
         result_list_9 = cur.fetchall()
         return result_list_9
-        
+
+
+def user_list(userdata):
+    cur = conn.cursor()
+    # print(str(userdata.id) + userdata.first_name + userdata.last_name + userdata.type)
+
+    cur.execute("INSERT INTO public.user VALUES('" + str(
+        userdata.id) + "','" + str(userdata.first_name) + "','" + str(userdata.last_name) + "','" + userdata.type + "') ON CONFLICT(id) DO NOTHING")
+    conn.commit()
+
