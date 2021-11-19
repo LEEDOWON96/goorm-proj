@@ -30,11 +30,11 @@ phases:
       - echo Pushing the Image
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/goorm/telegram-bot:1.1
 
-  # post_build:
-  #   commands:
-  #     - echo Build completed on `date`
-  #     - echo deployment started on `date`
-      
-  #     - kubectl apply -f ./manifest/exchangeservice.yaml 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo deployment started on `date`
+      - arn:aws:iam::562282606062:role/service-role/codebuild-telegram-build-service-role
+      - kubectl apply -f ./manifest/exchangeservice.yaml 
 
 
