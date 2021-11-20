@@ -34,7 +34,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo deployment started on `date`
-      - arn:aws:iam::562282606062:role/service-role/codebuild-telegram-build-service-role
+
       - kubectl apply -f ./manifest/exchangeservice.yaml 
 
 
