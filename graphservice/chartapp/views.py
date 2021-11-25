@@ -13,11 +13,11 @@ class ERPredictAPIView(APIView):
     permission_classes = []
 
     conn = psycopg2.connect(
-        host="database-1.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
-        database="test",
-        user="goorm",
-        password="test123qwe",
-        port="5432"
+        host="",
+        database="",
+        user="",
+        password="",
+        port=""
     )
 
     def get(self, request):
