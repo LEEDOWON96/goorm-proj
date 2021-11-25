@@ -4,11 +4,11 @@ from datetime import datetime
 today_date = datetime.today().strftime("%Y-%m-%d")  # WHERE 문에서 현재 시각 조건 입력위함
 
 conn = psycopg2.connect(
-    host="eks-work-db.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
-    database="myworkdb",
-    user="mywork",
-    password="wIi~e1xIrj!C~Hv.",
-    port="5432"
+    host="",
+    database="",
+    user="",
+    password="",
+    port=""
 )
 
 

@@ -5,11 +5,11 @@ import update_db
 
 
 conn = psycopg2.connect(
-    host="eks-work-db.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
-    database="myworkdb",
-    user="mywork",
-    password="wIi~e1xIrj!C~Hv.",
-    port="5432"
+    host="",
+    database="",
+    user="",
+    password="",
+    port=""
 )
 
 

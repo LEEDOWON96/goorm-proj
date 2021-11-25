@@ -53,11 +53,11 @@ USD = october[october['cur_unit'] == 'USD'].iloc[:, :-3]
 
 # aws rds connect 위한 인증 정보
 param_dic = {
-    "host": "eks-work-db.ck9mt4aiy0zp.ap-northeast-2.rds.amazonaws.com",
-    "dbname": "myworkdb",
-    "user": "mywork",
-    "password": "wIi~e1xIrj!C~Hv.",
-    "port": 5432
+    "host": "",
+    "dbname": "",
+    "user": "",
+    "password": "",
+    "port": 
 }
 
 # connect 함수 define
